@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111; /* Dark background */
+    color: #eee;  /* Light text */
+    text-align: center; 
+    margin: 0;
+}
+
+h1 {
+    color: #fff;  /* White heading */
+    margin-top: 50px;
+}
+
+form {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 20px;
+}
+
+textarea {
+    width: 400px;
+    height: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #333; /* Dark border */
+    border-radius: 5px;
+    background-color: #222; /* Darker background for textarea */
+    color: #eee;
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #333; /* Dark gray background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+input[type="submit"]:hover {
+    background-color: #555; /* Slightly lighter gray on hover */
+}
+</style>
+</head>
+
+<body>
+    <h1>Movie Review Sentiment Analysis</h1>
+    <form method="POST" onsubmit="return validateForm()"> 
+        <textarea id="review-textarea" name="review" rows="5" cols="50"></textarea><br>
+        <input id="analyze-button" type="submit" value="Analyze">
+    </form>
+
+    <script>
+        const textarea = document.getElementById("review-textarea");
+        const button = document.getElementById("analyze-button");
+
+        textarea.addEventListener("input", () => {
+            button.disabled = textarea.value.trim() === "";
+        });
+
+        function validateForm() {
+            if (textarea.value.trim() === "") {
+                alert("Please enter a review to analyze.");
+                return false; // Prevent form submission
+            }
+            // If not empty, allow form submission to proceed
+            return true;
+        }
+    </script>
+</body>
+</html>
