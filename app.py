@@ -38,7 +38,7 @@ def index():
         prediction = model.predict(review_vectorized)  # Predict the sentiment (0 or 1)
         
         # Convert numerical prediction to sentiment label
-        if prediction[0] == 1:
+        if prediction[0] == 0:
             prediction = "Positive"
         else:
             prediction = "Negative"
